@@ -1,4 +1,26 @@
 // ============================================
+// FIX FOR GITHUB PAGES PATH ISSUE
+// ============================================
+
+// Fix redirect to login page for GitHub Pages
+const fixGitHubPagesRedirect = () => {
+    // Override auth logout redirect for GitHub Pages
+    const originalLogout = auth.logout;
+    auth.logout = function() {
+        // Clear session
+        localStorage.removeItem('kampala_session');
+        sessionStorage.removeItem('kampala_session');
+        
+        // Redirect to index.html on GitHub Pages
+        window.location.href = './index.html';
+    };
+};
+
+// Call this fix
+fixGitHubPagesRedirect();
+
+// Then continue with the rest of your dashboard.js code...
+// ============================================
 // DASHBOARD FUNCTIONALITY
 // ============================================
 
@@ -397,4 +419,5 @@ function closeNotifications() {
 let dashboard;
 document.addEventListener('DOMContentLoaded', () => {
     dashboard = new Dashboard();
+
 });
