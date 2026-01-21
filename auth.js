@@ -345,4 +345,54 @@ document.head.insertAdjacentHTML('beforeend', `
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { auth, USERS };
+
+    // ============================================
+// FIX FOR GITHUB PAGES - AUTO-HIDE LOADING
+// ============================================
+
+// Force hide loading overlay on page load
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, hiding loading overlay...');
+    
+    // Hide loading immediately
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    if (loadingOverlay) {
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => {
+            loadingOverlay.style.display = 'none';
+        }, 300);
+    }
+    
+    // Check if we should auto-login
+    const savedSession = localStorage.getItem('kampala_session');
+    if (savedSession) {
+        try {
+            const session = JSON.parse(savedSession);
+            if (session.expires > Date.now()) {
+                // Auto-redirect to dashboard
+                console.log('Auto-login detected, redirecting...');
+                setTimeout(() => {
+                    window.location.href = './dashboard.html';
+                }, 500);
+            }
+        } catch (e) {
+            console.error('Session parse error:', e);
+        }
+    }
+});
+
+// Fix for GitHub Pages navigation
+window.addEventListener('load', function() {
+    console.log('Page fully loaded');
+    
+    // Final safety: hide loading overlay
+    setTimeout(() => {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay && loadingOverlay.style.display !== 'none') {
+            loadingOverlay.style.display = 'none';
+            console.log('Loading overlay force-hidden');
+        }
+    }, 1000);
+});
+
 }
