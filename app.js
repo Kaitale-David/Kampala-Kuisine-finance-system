@@ -1,5 +1,5 @@
 // ============================================
-// MAIN APPLICATION LOGIC
+// MAIN APPLICATION LOGIC - FIXED FOR GITHUB PAGES
 // ============================================
 
 class KampalaFinanceApp {
@@ -8,29 +8,47 @@ class KampalaFinanceApp {
     }
     
     init() {
+        // IMMEDIATELY hide loading overlay
+        this.hideLoadingOverlay();
+        
         // Check if we're on login page or dashboard
         if (window.location.pathname.includes('dashboard.html')) {
-            // Dashboard-specific initialization is handled in dashboard.js
+            // Dashboard initialization handled in dashboard.js
+            console.log('Dashboard page loaded');
             return;
         }
         
         // Login page initialization
         this.setupLoginPage();
-        
-        // Check for auto-login
-        this.checkAutoLogin();
+    }
+    
+    hideLoadingOverlay() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
+            // Hide immediately
+            loadingOverlay.style.display = 'none';
+            loadingOverlay.style.opacity = '0';
+            
+            // Also remove from DOM after a bit
+            setTimeout(() => {
+                if (loadingOverlay && loadingOverlay.parentNode) {
+                    loadingOverlay.parentNode.removeChild(loadingOverlay);
+                }
+            }, 500);
+        }
     }
     
     setupLoginPage() {
-        // Already handled by auth.js
-        console.log('Kampala Kuisine Financial System initialized');
+        console.log('Kampala Kuisine Login Page Ready');
         
-        // Add some interactive effects
-        this.addLoginPageEffects();
+        // Already handled by auth.js, just add some effects
+        setTimeout(() => {
+            this.addLoginPageEffects();
+        }, 100);
     }
     
     addLoginPageEffects() {
-        // Add floating particles effect
+        // Add floating particles effect (optional)
         this.createFloatingParticles();
         
         // Add typing effect to tagline
@@ -43,7 +61,7 @@ class KampalaFinanceApp {
         
         const particles = ['🍽️', '💰', '📊', '📈', '💸', '💳', '💵', '💎'];
         
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 10; i++) {
             const particle = document.createElement('div');
             particle.textContent = particles[Math.floor(Math.random() * particles.length)];
             particle.style.cssText = `
@@ -54,23 +72,8 @@ class KampalaFinanceApp {
                 top: ${Math.random() * 100}%;
                 animation: float ${Math.random() * 10 + 10}s linear infinite;
                 z-index: 0;
+                pointer-events: none;
             `;
-            
-            // Add animation
-            const style = document.createElement('style');
-            if (!document.getElementById('float-animation')) {
-                style.id = 'float-animation';
-                style.textContent = `
-                    @keyframes float {
-                        0% { transform: translate(0, 0) rotate(0deg); }
-                        25% { transform: translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px) rotate(90deg); }
-                        50% { transform: translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px) rotate(180deg); }
-                        75% { transform: translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px) rotate(270deg); }
-                        100% { transform: translate(0, 0) rotate(360deg); }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
             
             container.appendChild(particle);
         }
@@ -88,32 +91,28 @@ class KampalaFinanceApp {
             if (i < originalText.length) {
                 tagline.textContent += originalText.charAt(i);
                 i++;
-                setTimeout(typeWriter, 50);
+                setTimeout(typeWriter, 30);
             }
         };
         
         // Start typing after a delay
-        setTimeout(typeWriter, 1000);
-    }
-    
-    checkAutoLogin() {
-        // Check if user should be auto-logged in
-        const rememberMe = localStorage.getItem('kampala_remember') === 'true';
-        const savedUser = localStorage.getItem('kampala_user');
-        
-        if (rememberMe && savedUser) {
-            // Auto-fill username
-            const usernameInput = document.getElementById('username');
-            if (usernameInput) {
-                usernameInput.value = savedUser;
-                document.getElementById('rememberMe').checked = true;
-            }
-        }
+        setTimeout(typeWriter, 500);
     }
 }
 
-// Initialize app
-const kampalaApp = new KampalaFinanceApp();
+// Initialize app with timeout protection
+window.addEventListener('DOMContentLoaded', () => {
+    // Force hide loading after 3 seconds max (safety net)
+    setTimeout(() => {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.style.display = 'none';
+        }
+    }, 3000);
+    
+    // Initialize app
+    const kampalaApp = new KampalaFinanceApp();
+});
 
 // Global utility functions
 function formatCurrency(amount, currency = 'USD') {
@@ -132,46 +131,7 @@ function formatDate(date) {
     });
 }
 
-function showToast(message, type = 'info') {
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    toast.textContent = message;
-    toast.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: ${type === 'success' ? 'var(--success)' : 
-                    type === 'error' ? 'var(--danger)' : 
-                    type === 'warning' ? 'var(--warning)' : 'var(--info)'};
-        color: white;
-        padding: 12px 24px;
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow-medium);
-        z-index: 1000;
-        animation: slideUp 0.3s ease;
-    `;
-    
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-        toast.style.animation = 'slideDown 0.3s ease';
-        setTimeout(() => toast.remove(), 300);
-    }, 3000);
-    
-    // Add animations if not already present
-    if (!document.getElementById('toast-animations')) {
-        const style = document.createElement('style');
-        style.id = 'toast-animations';
-        style.textContent = `
-            @keyframes slideUp {
-                from { transform: translateY(100%); opacity: 0; }
-                to { transform: translateY(0); opacity: 1; }
-            }
-            @keyframes slideDown {
-                from { transform: translateY(0); opacity: 1; }
-                to { transform: translateY(100%); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-    }
+// Make auth globally available
+if (typeof auth === 'undefined') {
+    console.warn('auth.js not loaded yet');
 }
