@@ -31,31 +31,56 @@ class Dashboard {
     }
     
     init() {
-        // Check authentication
-        if (!auth.isAuthenticated) {
-            window.location.href = 'index.html';
-            return;
-        }
-        
-        // Update UI with user data
-        this.updateUserInfo();
-        
-        // Set up navigation
-        this.setupNavigation();
-        
-        // Update date and time
-        this.updateDateTime();
-        setInterval(() => this.updateDateTime(), 60000); // Update every minute
-        
-        // Set up notifications
-        this.setupNotifications();
-        
-        // Set up event listeners
-        this.setupEventListeners();
-        
-        // Load dashboard data
-        this.loadDashboardData();
+    // IMMEDIATELY hide any loading overlay
+    this.hideLoadingOverlay();
+    
+    // Check authentication
+    if (!auth || !auth.isAuthenticated) {
+        console.log('Not authenticated, redirecting to login...');
+        // Use setTimeout to avoid redirect loops
+        setTimeout(() => {
+            window.location.href = './index.html';
+        }, 100);
+        return;
     }
+    
+    console.log('User authenticated:', auth.getCurrentUser()?.name);
+    
+    // Update UI with user data
+    this.updateUserInfo();
+    
+    // Set up navigation
+    this.setupNavigation();
+    
+    // Update date and time
+    this.updateDateTime();
+    setInterval(() => this.updateDateTime(), 60000);
+    
+    // Set up notifications
+    this.setupNotifications();
+    
+    // Set up event listeners
+    this.setupEventListeners();
+    
+    // Load dashboard data
+    this.loadDashboardData();
+    
+    console.log('Dashboard initialized successfully');
+}
+
+hideLoadingOverlay() {
+    // Remove any loading overlay that might exist
+    const loadingOverlays = document.querySelectorAll('.loading-overlay');
+    loadingOverlays.forEach(overlay => {
+        overlay.style.display = 'none';
+    });
+    
+    // Also check for spinner elements
+    const spinners = document.querySelectorAll('.loading-spinner, .progress-bar');
+    spinners.forEach(spinner => {
+        spinner.style.display = 'none';
+    });
+}
     
     updateUserInfo() {
         const user = auth.getCurrentUser();
@@ -421,3 +446,4 @@ document.addEventListener('DOMContentLoaded', () => {
     dashboard = new Dashboard();
 
 });
+
