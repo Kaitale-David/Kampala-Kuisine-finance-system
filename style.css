@@ -1,0 +1,522 @@
+/* Kampala Kuisine Green Theme */
+:root {
+    /* Primary Greens */
+    --forest-green: #0A5C36;
+    --emerald-green: #2E8B57;
+    --mint-green: #98FB98;
+    --sage-green: #9DC183;
+    --lime-green: #32CD32;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #0A5C36 0%, #2E8B57 100%);
+    --gradient-secondary: linear-gradient(135deg, #2E8B57 0%, #9DC183 100%);
+    --gradient-accent: linear-gradient(135deg, #98FB98 0%, #32CD32 100%);
+    --gradient-light: linear-gradient(135deg, #F0FFF0 0%, #E8F5E9 100%);
+    
+    /* Backgrounds */
+    --bg-light: #F0FFF0;
+    --bg-lighter: #E8F5E9;
+    --bg-white: #FFFFFF;
+    
+    /* Text */
+    --text-dark: #0A3521;
+    --text-medium: #1A5C3A;
+    --text-light: #2E8B57;
+    
+    /* Status Colors */
+    --success: #32CD32;
+    --warning: #FFA500;
+    --danger: #FF6B6B;
+    --info: #4682B4;
+}
+
+/* ============================================
+   KAMPALA KUISINE FINANCIAL SYSTEM STYLES
+   Green Theme - Professional Design
+   ============================================ */
+
+/* RESET & BASE STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Primary Greens - Kampala Kuisine Brand */
+    --forest-green: #0A5C36;
+    --emerald-green: #2E8B57;
+    --mint-green: #98FB98;
+    --sage-green: #9DC183;
+    --lime-green: #32CD32;
+    --olive-green: #556B2F;
+    --dark-green: #0A3521;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #0A5C36 0%, #2E8B57 100%);
+    --gradient-secondary: linear-gradient(135deg, #2E8B57 0%, #9DC183 100%);
+    --gradient-accent: linear-gradient(135deg, #98FB98 0%, #32CD32 100%);
+    --gradient-dark: linear-gradient(135deg, #0A3521 0%, #0A5C36 100%);
+    --gradient-light: linear-gradient(135deg, #F0FFF0 0%, #E8F5E9 100%);
+    --gradient-card: linear-gradient(135deg, #FFFFFF 0%, #F8FFF8 100%);
+    
+    /* Backgrounds */
+    --bg-light: #F0FFF0;
+    --bg-lighter: #E8F5E9;
+    --bg-white: #FFFFFF;
+    --bg-card: #FFFFFF;
+    
+    /* Text Colors */
+    --text-dark: #0A3521;
+    --text-medium: #1A5C3A;
+    --text-light: #2E8B57;
+    --text-white: #FFFFFF;
+    --text-muted: #7A9C89;
+    
+    /* Status Colors */
+    --success: #32CD32;
+    --warning: #FFA500;
+    --danger: #FF6B6B;
+    --info: #4682B4;
+    --purple: #9370DB;
+    
+    /* Shadows */
+    --shadow-light: 0 4px 6px rgba(10, 92, 54, 0.1);
+    --shadow-medium: 0 8px 16px rgba(10, 92, 54, 0.15);
+    --shadow-heavy: 0 12px 24px rgba(10, 92, 54, 0.2);
+    
+    /* Borders */
+    --border-light: 1px solid #E0F0E0;
+    --border-medium: 1px solid #9DC183;
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    --border-radius-lg: 16px;
+    
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-xxl: 48px;
+}
+
+body {
+    font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--bg-light);
+}
+
+/* ============================================
+   LOGIN PAGE STYLES
+   ============================================ */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+    background: var(--gradient-light);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    width: 100%;
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-heavy);
+    min-height: 80vh;
+}
+
+/* Brand Section */
+.brand-section {
+    background: var(--gradient-dark);
+    color: var(--text-white);
+    padding: var(--space-xxl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.logo {
+    font-size: 64px;
+    margin-bottom: var(--space-lg);
+}
+
+.restaurant-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: var(--space-sm);
+    background: linear-gradient(to right, #98FB98, #32CD32);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: var(--space-xl);
+}
+
+.features-list {
+    margin-top: var(--space-xl);
+}
+
+.features-list h3 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-md);
+    color: var(--mint-green);
+}
+
+.features-list ul {
+    list-style: none;
+}
+
+.features-list li {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(152, 251, 152, 0.2);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.features-list li:before {
+    content: "✓";
+    color: var(--lime-green);
+    font-weight: bold;
+}
+
+/* Login Section */
+.login-section {
+    padding: var(--space-xxl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.login-header h2 {
+    font-size: 2rem;
+    color: var(--forest-green);
+    margin-bottom: var(--space-sm);
+}
+
+.login-header p {
+    color: var(--text-muted);
+}
+
+/* Form Styles */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: var(--space-sm);
+    color: var(--text-medium);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.input-group label .icon {
+    font-size: 1.2rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #E0F0E0;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--bg-lighter);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--emerald-green);
+    box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+    background: var(--bg-white);
+}
+
+.show-password {
+    position: absolute;
+    right: 12px;
+    top: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.show-password:hover {
+    opacity: 1;
+}
+
+/* Remember & Forgot */
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    cursor: pointer;
+}
+
+.checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--emerald-green);
+}
+
+.forgot-link {
+    color: var(--emerald-green);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.forgot-link:hover {
+    color: var(--forest-green);
+    text-decoration: underline;
+}
+
+/* Login Button */
+.login-btn {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-md);
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.btn-text {
+    flex: 1;
+    text-align: center;
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* Demo Credentials */
+.demo-credentials {
+    background: var(--gradient-light);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    margin-top: var(--space-lg);
+    border: var(--border-light);
+}
+
+.demo-credentials h4 {
+    color: var(--forest-green);
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+.credential-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+}
+
+.credential {
+    background: var(--bg-white);
+    padding: var(--space-md);
+    border-radius: var(--border-radius-sm);
+    text-align: center;
+    border: var(--border-light);
+}
+
+.credential strong {
+    display: block;
+    color: var(--emerald-green);
+    margin-bottom: var(--space-sm);
+}
+
+.credential code {
+    background: var(--bg-lighter);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+/* Security Notice */
+.security-notice {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    background: var(--gradient-light);
+    padding: var(--space-md);
+    border-radius: var(--border-radius);
+    margin-top: var(--space-xl);
+    border-left: 4px solid var(--emerald-green);
+}
+
+.security-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.security-notice p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+    max-width: 400px;
+    padding: var(--space-xl);
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--mint-green);
+    animation: spin 1s ease-in-out infinite;
+    margin: 0 auto var(--space-lg);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-progress {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    margin-top: var(--space-lg);
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--gradient-accent);
+    animation: progress 2s ease-in-out infinite;
+}
+
+@keyframes progress {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    .brand-section {
+        padding: var(--space-xl);
+    }
+    
+    .login-section {
+        padding: var(--space-xl);
+    }
+}
+
+@media (max-width: 768px) {
+    .credential-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .restaurant-name {
+        font-size: 2rem;
+    }
+    
+    .logo {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        border-radius: 0;
+        min-height: 100vh;
+    }
+    
+    .brand-section,
+    .login-section {
+        padding: var(--space-lg);
+    }
+    
+    .remember-forgot {
+        flex-direction: column;
+        gap: var(--space-md);
+        align-items: flex-start;
+    }
+}

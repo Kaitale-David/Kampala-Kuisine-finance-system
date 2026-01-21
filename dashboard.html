@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard | Kampala Kuisine</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">🍽️</div>
+            <h2>Kampala Kuisine</h2>
+            <p class="user-role" id="userRole">Owner Dashboard</p>
+        </div>
+        
+        <div class="user-profile">
+            <div class="avatar" id="userAvatar">JK</div>
+            <div class="user-info">
+                <h3 id="userName">John Kamau</h3>
+                <p id="userEmail">john@kampalakuisine.com</p>
+                <div class="ownership-badge" id="ownershipBadge">60% Owner</div>
+            </div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item active" data-page="dashboard">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </li>
+            <li class="nav-item" data-page="financials">
+                <span class="nav-icon">💰</span>
+                <span class="nav-text">Financial Reports</span>
+            </li>
+            <li class="nav-item" data-page="transactions">
+                <span class="nav-icon">💳</span>
+                <span class="nav-text">Transactions</span>
+            </li>
+            <li class="nav-item" data-page="debtors">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">Debtors & Creditors</span>
+            </li>
+            <li class="nav-item" data-page="inventory">
+                <span class="nav-icon">📦</span>
+                <span class="nav-text">Inventory</span>
+            </li>
+            <li class="nav-item" data-page="payroll">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Payroll</span>
+            </li>
+            <li class="nav-item" data-page="glovo">
+                <span class="nav-icon">🚚</span>
+                <span class="nav-text">Glovo Analytics</span>
+            </li>
+            <li class="nav-item" data-page="decisions">
+                <span class="nav-icon">🤝</span>
+                <span class="nav-text">Joint Decisions</span>
+            </li>
+            <li class="nav-item" data-page="settings">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <button class="logout-btn" onclick="auth.logout()">
+                <span class="logout-icon">🚪</span>
+                <span>Logout</span>
+            </button>
+            <div class="system-status">
+                <div class="status-indicator active"></div>
+                <span>System Online</span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <span>☰</span>
+                </button>
+                <div class="date-display">
+                    <h1 id="currentDate">Monday, January 21, 2024</h1>
+                    <p id="currentTime">10:30 AM</p>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="quick-stats">
+                    <div class="stat">
+                        <span class="stat-label">Today's Revenue</span>
+                        <span class="stat-value" id="todayRevenue">$2,450.00</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Active Tables</span>
+                        <span class="stat-value" id="activeTables">12</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Online Orders</span>
+                        <span class="stat-value" id="onlineOrders">8</span>
+                    </div>
+                </div>
+                
+                <div class="notifications">
+                    <button class="notification-btn" id="notificationBtn">
+                        <span class="bell-icon">🔔</span>
+                        <span class="badge">3</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Dashboard Page (Default) -->
+            <div class="page active" id="page-dashboard">
+                <!-- Welcome Banner -->
+                <div class="welcome-banner">
+                    <div class="banner-content">
+                        <h2>Welcome back, <span id="welcomeName">John</span>! 👋</h2>
+                        <p>Here's your financial overview for today. Everything is looking great!</p>
+                    </div>
+                    <div class="banner-actions">
+                        <button class="btn-primary" onclick="quickAction('addTransaction')">
+                            <span>+ Add Transaction</span>
+                        </button>
+                        <button class="btn-secondary" onclick="quickAction('generateReport')">
+                            <span>📄 Daily Report</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- KPI Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Monthly Revenue</h3>
+                            <span class="trend positive">↗ 12%</span>
+                        </div>
+                        <div class="kpi-value">$48,560.00</div>
+                        <div class="kpi-progress">
+                            <div class="progress-bar" style="width: 75%"></div>
+                            <span>75% of target</span>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Net Profit</h3>
+                            <span class="trend positive">↗ 8%</span>
+                        </div>
+                        <div class="kpi-value">$12,340.00</div>
+                        <div class="kpi-progress">
+                            <div class="progress-bar" style="width: 82%"></div>
+                            <span>22.3% margin</span>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Food Cost %</h3>
+                            <span class="trend negative">↘ 2%</span>
+                        </div>
+                        <div class="kpi-value">28.5%</div>
+                        <div class="kpi-progress">
+                            <div class="progress-bar warning" style="width: 85%"></div>
+                            <span>Target: 25%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Labor Cost %</h3>
+                            <span class="trend positive">↘ 3%</span>
+                        </div>
+                        <div class="kpi-value">24.2%</div>
+                        <div class="kpi-progress">
+                            <div class="progress-bar" style="width: 60%"></div>
+                            <span>Below target</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charts Section -->
+                <div class="charts-section">
+                    <div class="chart-container">
+                        <h3>Revenue Trend (Last 30 Days)</h3>
+                        <div class="chart-placeholder" id="revenueChart">
+                            <!-- Chart would be rendered here -->
+                            <div class="mock-chart">
+                                <div class="mock-bars">
+                                    <div class="bar" style="height: 30%"></div>
+                                    <div class="bar" style="height: 45%"></div>
+                                    <div class="bar" style="height: 60%"></div>
+                                    <div class="bar" style="height: 75%"></div>
+                                    <div class="bar" style="height: 90%"></div>
+                                    <div class="bar" style="height: 70%"></div>
+                                    <div class="bar" style="height: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Sales by Category</h3>
+                        <div class="chart-placeholder" id="categoryChart">
+                            <!-- Pie chart would be here -->
+                            <div class="mock-pie">
+                                <div class="slice" style="--size: 40%; --color: var(--forest-green);"></div>
+                                <div class="slice" style="--size: 25%; --color: var(--emerald-green);"></div>
+                                <div class="slice" style="--size: 20%; --color: var(--sage-green);"></div>
+                                <div class="slice" style="--size: 15%; --color: var(--mint-green);"></div>
+                            </div>
+                            <div class="pie-legend">
+                                <div><span class="legend-color" style="background: var(--forest-green)"></span> Food</div>
+                                <div><span class="legend-color" style="background: var(--emerald-green)"></span> Drinks</div>
+                                <div><span class="legend-color" style="background: var(--sage-green)"></span> Desserts</div>
+                                <div><span class="legend-color" style="background: var(--mint-green)"></span> Others</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity & Quick Actions -->
+                <div class="activity-section">
+                    <div class="recent-activity">
+                        <h3>Recent Transactions</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">💳</div>
+                                <div class="activity-details">
+                                    <div class="activity-title">Table 4 Payment</div>
+                                    <div class="activity-time">10:15 AM • Cash</div>
+                                </div>
+                                <div class="activity-amount positive">$85.50</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">🚚</div>
+                                <div class="activity-details">
+                                    <div class="activity-title">Glovo Order #1234</div>
+                                    <div class="activity-time">9:45 AM • Online</div>
+                                </div>
+                                <div class="activity-amount positive">$42.75</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">📦</div>
+                                <div class="activity-details">
+                                    <div class="activity-title">Supplier Payment</div>
+                                    <div class="activity-time">Yesterday • Bank Transfer</div>
+                                </div>
+                                <div class="activity-amount negative">-$350.00</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-actions">
+                        <h3>Quick Actions</h3>
+                        <div class="actions-grid">
+                            <button class="action-btn" onclick="quickAction('addExpense')">
+                                <span class="action-icon">📝</span>
+                                <span>Add Expense</span>
+                            </button>
+                            <button class="action-btn" onclick="quickAction('recordPayment')">
+                                <span class="action-icon">💰</span>
+                                <span>Record Payment</span>
+                            </button>
+                            <button class="action-btn" onclick="quickAction('checkInventory')">
+                                <span class="action-icon">📦</span>
+                                <span>Check Inventory</span>
+                            </button>
+                            <button class="action-btn" onclick="quickAction('viewReports')">
+                                <span class="action-icon">📊</span>
+                                <span>View Reports</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Debtors Summary -->
+                <div class="debtors-summary">
+                    <div class="section-header">
+                        <h3>Active Debtors</h3>
+                        <button class="btn-text" onclick="navigateTo('debtors')">View All →</button>
+                    </div>
+                    <div class="debtors-list">
+                        <div class="debtor-item">
+                            <div class="debtor-info">
+                                <div class="debtor-name">Corporate Catering Ltd</div>
+                                <div class="debtor-details">Due: 2024-01-25</div>
+                            </div>
+                            <div class="debtor-amount">$1,500.00</div>
+                            <div class="debtor-status warning">Pending</div>
+                        </div>
+                        <div class="debtor-item">
+                            <div class="debtor-info">
+                                <div class="debtor-name">Events Company</div>
+                                <div class="debtor-details">Due: 2024-01-28</div>
+                            </div>
+                            <div class="debtor-amount">$850.00</div>
+                            <div class="debtor-status warning">Pending</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other pages would be here (hidden by default) -->
+            <div class="page" id="page-financials">
+                <!-- Financial Reports Page Content -->
+                <h2>Financial Reports</h2>
+                <p>This page would contain financial statements, P&L reports, etc.</p>
+            </div>
+            
+            <!-- Add more pages for each nav item -->
+        </div>
+    </main>
+    
+    <!-- Notification Panel -->
+    <div class="notification-panel" id="notificationPanel">
+        <div class="notification-header">
+            <h3>Notifications</h3>
+            <button class="close-btn" onclick="closeNotifications()">×</button>
+        </div>
+        <div class="notification-list">
+            <div class="notification-item">
+                <div class="notification-icon">⚠️</div>
+                <div class="notification-content">
+                    <div class="notification-title">Low Inventory Alert</div>
+                    <div class="notification-text">Beef stock is below minimum level</div>
+                    <div class="notification-time">2 hours ago</div>
+                </div>
+            </div>
+            <div class="notification-item">
+                <div class="notification-icon">💰</div>
+                <div class="notification-content">
+                    <div class="notification-title">Payment Received</div>
+                    <div class="notification-text">Glovo payout for week 3 received</div>
+                    <div class="notification-time">5 hours ago</div>
+                </div>
+            </div>
+            <div class="notification-item">
+                <div class="notification-icon">📊</div>
+                <div class="notification-content">
+                    <div class="notification-title">Monthly Report Ready</div>
+                    <div class="notification-text">January financial report is available</div>
+                    <div class="notification-time">1 day ago</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

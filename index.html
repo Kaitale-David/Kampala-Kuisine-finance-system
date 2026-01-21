@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kampala Kuisine | Financial Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">
+</head>
+<body class="login-page">
+    <div class="container">
+        <!-- Left Side - Branding -->
+        <div class="brand-section">
+            <div class="logo-container">
+                <div class="logo">🍽️</div>
+                <h1 class="restaurant-name">Kampala Kuisine</h1>
+                <p class="tagline">Exquisite Dining • Financial Excellence</p>
+            </div>
+            
+            <div class="features-list">
+                <h3>Complete Financial Management</h3>
+                <ul>
+                    <li>✅ Real-time Profit & Loss Tracking</li>
+                    <li>✅ Multi-Owner Financial Dashboard</li>
+                    <li>✅ Automated Expense Management</li>
+                    <li>✅ Debtor & Creditor System</li>
+                    <li>✅ Inventory Control with Alerts</li>
+                    <li>✅ Payroll & Staff Management</li>
+                    <li>✅ Glovo Integration Analytics</li>
+                    <li>✅ Mobile-Optimized Access</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Right Side - Login Form -->
+        <div class="login-section">
+            <div class="login-card">
+                <div class="login-header">
+                    <h2>Owner Access Portal</h2>
+                    <p>Secure login for authorized personnel only</p>
+                </div>
+                
+                <form id="loginForm" class="login-form">
+                    <div class="input-group">
+                        <label for="username">
+                            <span class="icon">👤</span>
+                            Username
+                        </label>
+                        <input type="text" id="username" placeholder="Enter your username" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">
+                            <span class="icon">🔒</span>
+                            Password
+                        </label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <button type="button" class="show-password" id="showPassword">👁️</button>
+                    </div>
+                    
+                    <div class="remember-forgot">
+                        <label class="checkbox">
+                            <input type="checkbox" id="rememberMe">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">
+                        <span class="btn-text">Access Financial Dashboard</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                    
+                    <div class="demo-credentials">
+                        <h4>Demo Access:</h4>
+                        <div class="credential-grid">
+                            <div class="credential">
+                                <strong>Owner 1</strong>
+                                <div>User: <code>john</code></div>
+                                <div>Pass: <code>john123</code></div>
+                            </div>
+                            <div class="credential">
+                                <strong>Owner 2</strong>
+                                <div>User: <code>mary</code></div>
+                                <div>Pass: <code>mary456</code></div>
+                            </div>
+                            <div class="credential">
+                                <strong>Manager</strong>
+                                <div>User: <code>manager</code></div>
+                                <div>Pass: <code>manager789</code></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="security-notice">
+                    <div class="security-icon">🛡️</div>
+                    <p>This system uses 256-bit SSL encryption. All financial data is secured and backed up daily.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Initializing Kampala Kuisine Financial System...</p>
+            <div class="loading-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
