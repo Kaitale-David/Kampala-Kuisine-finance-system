@@ -519,4 +519,36 @@ body {
         gap: var(--space-md);
         align-items: flex-start;
     }
+
+}
+
+/* ============================================
+   LOADING OVERLAY FIXES
+   ============================================ */
+
+/* Force hide loading after page load */
+body.loaded .loading-overlay {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Add loaded class to body when page is ready */
+body.loaded {
+    overflow: auto !important;
+}
+
+/* Quick fix: hide loading overlay with important flag */
+#loadingOverlay.hidden {
+    display: none !important;
+}
+
+/* Animation complete handler */
+@keyframes loadingComplete {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+
+.loading-complete {
+    animation: loadingComplete 0.5s ease forwards !important;
 }
